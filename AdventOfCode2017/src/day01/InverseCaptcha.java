@@ -7,24 +7,11 @@ import java.io.IOException;
 
 public class InverseCaptcha {
 
-	private static int resultNextDigit(String input) {
+	private static int computeResult(String input, int step) {
 		int result = 0;
 
 		for (int i = 0; i < input.length(); i++) {
-			if (input.charAt(i) == input.charAt((i + 1) % input.length()))
-				result += input.charAt(i) - '0';
-		}
-
-		return result;
-	}
-
-	private static int resultHalfwayAroundDigit(String input) {
-		int result = 0;
-		int length = input.length();
-		int step = length / 2;
-
-		for (int i = 0; i < length; i++) {
-			if (input.charAt(i) == input.charAt((i + step) % length))
+			if (input.charAt(i) == input.charAt((i + step) % input.length()))
 				result += input.charAt(i) - '0';
 		}
 
@@ -36,8 +23,8 @@ public class InverseCaptcha {
 		try {
 			bufReader = new BufferedReader(new FileReader("./input/01"));
 			String input = bufReader.readLine();
-			System.out.println("resultNextDigit: " + resultNextDigit(input));
-			System.out.println("resultHalfwayAroundDigit: " + resultHalfwayAroundDigit(input));
+			System.out.println("resultNextDigit: " + computeResult(input, 1));
+			System.out.println("resultHalfwayAroundDigit: " + computeResult(input, input.length() / 2));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
