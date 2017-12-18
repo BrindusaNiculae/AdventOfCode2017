@@ -25,42 +25,52 @@ public class Registers {
 	private static boolean conditionsTrue(Map<String, Integer> registers, String conditionReg, String conditionOp,
 			int conditionLimit) {
 
-		if (conditionOp.equals("==") && registers.get(conditionReg) == conditionLimit)
-			return true;
-		if (conditionOp.equals("<=") && registers.get(conditionReg) <= conditionLimit)
-			return true;
-		if (conditionOp.equals(">=") && registers.get(conditionReg) >= conditionLimit)
-			return true;
-		if (conditionOp.equals("!=") && registers.get(conditionReg) != conditionLimit)
-			return true;
-		if (conditionOp.equals("<") && registers.get(conditionReg) < conditionLimit)
-			return true;
-		if (conditionOp.equals(">") && registers.get(conditionReg) > conditionLimit)
-			return true;
-		return false;
-		// Does not compute the correct answer.
-		// switch (conditionOp) {
-		// case "==":
-		// if (registers.get(conditionReg) == conditionLimit)
+		// if (conditionOp.equals("==") && registers.get(conditionReg) ==
+		// conditionLimit)
 		// return true;
-		// case "<=":
-		// if (registers.get(conditionReg) <= conditionLimit)
+		// if (conditionOp.equals("<=") && registers.get(conditionReg) <=
+		// conditionLimit)
 		// return true;
-		// case ">=":
-		// if (registers.get(conditionReg) >= conditionLimit)
+		// if (conditionOp.equals(">=") && registers.get(conditionReg) >=
+		// conditionLimit)
 		// return true;
-		// case "!=":
-		// if (registers.get(conditionReg) != conditionLimit)
+		// if (conditionOp.equals("!=") && registers.get(conditionReg) !=
+		// conditionLimit)
 		// return true;
-		// case "<":
-		// if (registers.get(conditionReg) < conditionLimit)
+		// if (conditionOp.equals("<") && registers.get(conditionReg) < conditionLimit)
 		// return true;
-		// case ">":
-		// if (registers.get(conditionReg) > conditionLimit)
+		// if (conditionOp.equals(">") && registers.get(conditionReg) > conditionLimit)
 		// return true;
-		// default:
 		// return false;
-		// }
+		switch (conditionOp) {
+		case "==":
+			if (registers.get(conditionReg) == conditionLimit)
+				return true;
+			break;
+		case "<=":
+			if (registers.get(conditionReg) <= conditionLimit)
+				return true;
+			break;
+		case ">=":
+			if (registers.get(conditionReg) >= conditionLimit)
+				return true;
+			break;
+		case "!=":
+			if (registers.get(conditionReg) != conditionLimit)
+				return true;
+			break;
+		case "<":
+			if (registers.get(conditionReg) < conditionLimit)
+				return true;
+			break;
+		case ">":
+			if (registers.get(conditionReg) > conditionLimit)
+				return true;
+			break;
+		default:
+			return false;
+		}
+		return false;
 	}
 
 	private static int findMaxRegister(Map<String, Integer> registers) {
